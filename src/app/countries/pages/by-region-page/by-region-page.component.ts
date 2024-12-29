@@ -1,22 +1,34 @@
-import { Component } from '@angular/core';
-import { Country } from '../../interfaces/Country';
+import { Component, OnInit } from '@angular/core';
+import { Country } from '../../interfaces/country.interface';
 import { CountriesService } from '../../services/countries.service';
+import { Region } from '../../interfaces/region.type';
 
 @Component({
   selector: 'app-by-region-page',
   templateUrl: './by-region-page.component.html',
   styles: ``
 })
-export class ByRegionPageComponent {
+export class ByRegionPageComponent implements OnInit{
 
-      public countries: Country[] = [];
+  public countries: Country[] = [];
+  public isLoading: boolean = false;
+  //public regions: ['Africa','America','Asia','Europe','Oceania'] = ['Africa','America','Asia','Europe','Oceania'];
+  public regions: Region[] = ['Africa','America','Asia','Europe','Oceania'];
+  public selectedRegion?: Region;
 
-      constructor(private countriesService: CountriesService){ }
+  constructor(private countriesService: CountriesService){ }
+  ngOnInit(): void {
+    this.countries = this.countriesService.cacheStore.byRegion.countries;
+    this.selectedRegion = this.countriesService.cacheStore.byRegion.region;
+  }
 
-      searchByRegion(term: string): void {
-        this.countriesService.searchRegion(term).subscribe( counties => {
-          this.countries = counties;
-        })
-      }
+  searchByRegion(region: Region): void {
+    this.isLoading = true;
+    this.selectedRegion = region;
+    this.countriesService.searchRegion(region).subscribe( counties => {
+      this.countries = counties;
+      this.isLoading = false;
+    })
+  }
 
 }

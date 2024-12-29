@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AboutPageComponent } from './pages/about-page/about-page.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ContactComponent } from './pages/contact-page/contact.component';
+
+import { AboutPageComponent } from './pages/about-page/about-page.component';
+import { ContactComponent } from './pages/contact-page/contact-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { SearchBoxComponent } from './components/searchBox/searchBox.component';
+import { LoadingSpinnerComponent } from './components/loadingSpinner/loading-spinner.component';
+import { SearchBoxComponent } from './components/searchBox/search-box.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 
@@ -14,6 +16,7 @@ import { SearchBoxComponent } from './components/searchBox/searchBox.component';
     AboutPageComponent,
     ContactComponent,
     HomePageComponent,
+    LoadingSpinnerComponent,
     SearchBoxComponent,
     SidebarComponent,
   ],
@@ -25,6 +28,7 @@ import { SearchBoxComponent } from './components/searchBox/searchBox.component';
     AboutPageComponent,
     ContactComponent,
     HomePageComponent,
+    LoadingSpinnerComponent,
     SearchBoxComponent,
     SidebarComponent,
   ]
